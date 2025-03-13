@@ -33,10 +33,12 @@ const HomePage = () => {
           getExperienceLevels()
         ]);
         
-        setLocations(locationsData);
-        setExperiences(experienceData);
+        setLocations(locationsData || []);
+        setExperiences(experienceData || []);
       } catch (error) {
         console.error('Error fetching filter options:', error);
+        setLocations([]);
+        setExperiences([]);
       }
     };
     
@@ -52,13 +54,16 @@ const HomePage = () => {
         page: currentPage
       });
       
-      setJobs(data.jobs);
-      setTotalPages(data.totalPages);
-      setTotalJobs(data.totalJobs);
+      setJobs(data?.jobs || []);
+      setTotalPages(data?.totalPages || 0);
+      setTotalJobs(data?.totalJobs || 0);
       setError(null);
     } catch (error) {
       setError('Failed to fetch jobs. Please try again later.');
       console.error('Error fetching jobs:', error);
+      setJobs([]);
+      setTotalPages(0);
+      setTotalJobs(0);
     } finally {
       setLoading(false);
     }
@@ -115,7 +120,7 @@ const HomePage = () => {
           
           {loading ? (
             <LoadingSpinner />
-          ) : jobs.length > 0 ? (
+          ) : jobs && jobs.length > 0 ? (
             <>
               <div className="mb-4 text-gray-600">
                 Found {totalJobs} jobs matching your criteria
