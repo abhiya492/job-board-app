@@ -35,7 +35,7 @@ A modern job board application built with React, Node.js, and MongoDB.
 
 1. Clone the repository
 ```bash
-git clone [your-repo-url]
+git clone https://github.com/abhiya492/job-board-app.git
 cd JobBoardApp
 ```
 
