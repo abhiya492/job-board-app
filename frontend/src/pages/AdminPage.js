@@ -23,7 +23,7 @@ const AdminPage = () => {
       setMessage('Job scraping started. This may take a few minutes...');
       setMessageType('info');
       
-      const response = await scrapeJobs(keyword, pages);
+      await scrapeJobs(keyword, pages);
       
       setMessage(`Job scraping initiated successfully for keyword: ${keyword}`);
       setMessageType('success');
